@@ -6,8 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		21F887812E9E36AB00CD886E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 21F887802E9E36A700CD886E /* README.md */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		21F887722E9E339B00CD886E /* Ditdash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ditdash.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		21F887802E9E36A700CD886E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -32,6 +37,7 @@
 		21F887692E9E339B00CD886E = {
 			isa = PBXGroup;
 			children = (
+				21F887802E9E36A700CD886E /* README.md */,
 				21F887742E9E339B00CD886E /* Ditdash */,
 				21F887732E9E339B00CD886E /* Products */,
 			);
@@ -109,6 +115,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				21F887812E9E36AB00CD886E /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
