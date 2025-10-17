@@ -8,18 +8,24 @@
 import SwiftUI
 
 struct MorseView: View {
+    @State private var morse = ""
+    @State private var morseConverted = ""
+    
     var body: some View {
         Spacer()
         
-        Text("--. / ...") // demo text
+        Text(morse)
             .font(.title.monospaced())
             .fontWeight(.bold)
             .padding()
             .multilineTextAlignment(.center)
+            .onChange(of: morse) {
+                morseConverted = convertMorseToText(morse: morse)
+            }
         
         Spacer()
         
-        Text("example text")
+        Text(morseConverted)
             .font(.headline.monospaced())
             .padding()
             .multilineTextAlignment(.center)
@@ -30,6 +36,7 @@ struct MorseView: View {
             HStack(spacing: 10) {
                 Button {
                     print("dit")
+                    morse.append(".")
                 } label: {
                     ZStack {
                         Circle()
@@ -44,6 +51,7 @@ struct MorseView: View {
                 
                 Button {
                     print("dash")
+                    morse.append("-")
                 } label: {
                     ZStack {
                         Capsule()
@@ -60,6 +68,7 @@ struct MorseView: View {
             HStack(spacing: 10) {
                 Button {
                     print("clear")
+                    morse = ""
                 } label: {
                     ZStack {
                         Label("Clear", systemImage: "xmark")
@@ -72,37 +81,43 @@ struct MorseView: View {
                 .frame(maxWidth: 50, maxHeight: 50)
                 
                 Button {
-                    print("space")
-                } label: {
-                    ZStack {
-                        Label("Space", systemImage: "space")
-                            .foregroundStyle(.foreground)
-                            .labelStyle(.iconOnly)
-                        RoundedRectangle(cornerRadius: 15)
-                            .foregroundStyle(.secondary)
-                    }
-                }
-                .frame(maxWidth: .infinity, maxHeight: 50)
-                
-                Button {
-                    print("next char")
-                    convertMorseToText(morse: "... / --- / ...")
-                } label: {
-                    ZStack {
-                        Label("Next Char", systemImage: "line.diagonal")
-                            .foregroundStyle(.foreground)
-                            .labelStyle(.iconOnly)
-                        RoundedRectangle(cornerRadius: 15)
-                            .foregroundStyle(.secondary)
-                    }
-                }
-                .frame(maxWidth: .infinity, maxHeight: 50)
-                
-                Button {
                     print("delete")
+                    if morse.hasSuffix(" / ") { // remove slash and spaces
+                            morse.removeLast(3)
+                        } else if !morse.isEmpty { // remove last char
+                            morse.removeLast()
+                        }
                 } label: {
                     ZStack {
                         Label("Delete", systemImage: "delete.left")
+                            .foregroundStyle(.foreground)
+                            .labelStyle(.iconOnly)
+                        RoundedRectangle(cornerRadius: 15)
+                            .foregroundStyle(.secondary)
+                    }
+                }
+                .frame(maxWidth: .infinity, maxHeight: 50)
+                
+                Button {
+                    print("next char (space)")
+                    morse.append(" ")
+                } label: {
+                    ZStack {
+                        Label("Next Character", systemImage: "space")
+                            .foregroundStyle(.foreground)
+                            .labelStyle(.iconOnly)
+                        RoundedRectangle(cornerRadius: 15)
+                            .foregroundStyle(.secondary)
+                    }
+                }
+                .frame(maxWidth: .infinity, maxHeight: 50)
+                
+                Button {
+                    print("space")
+                    morse.append(" / ")
+                } label: {
+                    ZStack {
+                        Label("Space", systemImage: "line.diagonal")
                             .foregroundStyle(.foreground)
                             .labelStyle(.iconOnly)
                         RoundedRectangle(cornerRadius: 15)
