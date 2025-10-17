@@ -11,7 +11,7 @@ struct MorseView: View {
     var body: some View {
         Spacer()
         
-        Text("- - . / . . .") // demo text
+        Text("--. / ...") // demo text
             .font(.title.monospaced())
             .fontWeight(.bold)
             .padding()
@@ -86,6 +86,7 @@ struct MorseView: View {
                 
                 Button {
                     print("next char")
+                    convertMorseToText(morse: "te rehs / ttes / kerst / uyh")
                 } label: {
                     ZStack {
                         Label("Next Char", systemImage: "line.diagonal")

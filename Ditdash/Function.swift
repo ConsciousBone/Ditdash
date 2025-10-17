@@ -47,6 +47,14 @@ let morseChars = [
     "-.--.-", "-.-.--", ".--.-." // ) !
 ]
 
-func convertMorseToText(morse: String) {
+func convertMorseToText(morse: String) -> String {
+    // morse input will be formatted like:
+    // -... .- - / --- .- -.
+    // meaning "bat man", so each morse char has a space
+    // separating them, and each word has a / separating them.
     print("converting '\(morse)' to text...")
+    let words = morse.split(separator: "/").map { $0.trimmingCharacters(in: .whitespaces) }
+    print(words)
+    
+    return "todo: return"
 }
