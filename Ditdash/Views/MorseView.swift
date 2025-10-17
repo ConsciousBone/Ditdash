@@ -86,7 +86,7 @@ struct MorseView: View {
                 
                 Button {
                     print("next char")
-                    convertMorseToText(morse: "te rehs / ttes / kerst / uyh")
+                    convertMorseToText(morse: "... / --- / ...")
                 } label: {
                     ZStack {
                         Label("Next Char", systemImage: "line.diagonal")
