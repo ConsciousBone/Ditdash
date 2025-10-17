@@ -14,7 +14,8 @@ struct MorseView: View {
     var body: some View {
         Spacer()
         
-        Text(morse)
+        Text(morse.isEmpty ? ".-- --- ..-" : morse)
+            .foregroundStyle(morse.isEmpty ? .secondary : .primary)
             .font(.title.monospaced())
             .fontWeight(.bold)
             .padding()
@@ -25,7 +26,8 @@ struct MorseView: View {
         
         Spacer()
         
-        Text(morseConverted)
+        Text(morseConverted.isEmpty ? "Enter some morse..." : morseConverted)
+            .foregroundStyle(morseConverted.isEmpty ? .tertiary : .secondary)
             .font(.headline.monospaced())
             .padding()
             .multilineTextAlignment(.center)
