@@ -50,9 +50,11 @@ struct DictionaryView: View {
     
     var body: some View {
         List {
-            ForEach(textChars.indices) { char in
+            ForEach(textChars.indices) { char in // fuh knows why this warnings
                 HStack {
                     Text(textChars[char])
+                    Spacer()
+                    Text(morseChars[char])
                 }
             }
         }

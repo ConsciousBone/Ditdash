@@ -10,6 +10,7 @@ import SwiftUI
 struct MorseView: View {
     @State private var morse = ""
     @State private var morseConverted = ""
+    @State private var buttonsLocked = false
     
     var body: some View {
         Spacer()
@@ -49,6 +50,7 @@ struct MorseView: View {
                             .foregroundStyle(.secondary)
                     }
                 }
+                .disabled(buttonsLocked)
                 .frame(maxWidth: .infinity, maxHeight: 200)
                 
                 Button {
@@ -64,6 +66,7 @@ struct MorseView: View {
                             .foregroundStyle(.secondary)
                     }
                 }
+                .disabled(buttonsLocked)
                 .frame(maxWidth: .infinity, maxHeight: 200)
             }
             
@@ -80,6 +83,7 @@ struct MorseView: View {
                             .foregroundStyle(.secondary)
                     }
                 }
+                .disabled(buttonsLocked)
                 .frame(maxWidth: 50, maxHeight: 50)
                 
                 Button {
@@ -98,6 +102,7 @@ struct MorseView: View {
                             .foregroundStyle(.secondary)
                     }
                 }
+                .disabled(buttonsLocked)
                 .frame(maxWidth: .infinity, maxHeight: 50)
                 
                 Button {
@@ -112,6 +117,7 @@ struct MorseView: View {
                             .foregroundStyle(.secondary)
                     }
                 }
+                .disabled(buttonsLocked)
                 .frame(maxWidth: .infinity, maxHeight: 50)
                 
                 Button {
@@ -126,13 +132,17 @@ struct MorseView: View {
                             .foregroundStyle(.secondary)
                     }
                 }
+                .disabled(buttonsLocked)
                 .frame(maxWidth: .infinity, maxHeight: 50)
                 
                 Button {
                     print("lock buttons")
+                    withAnimation {
+                        buttonsLocked.toggle()
+                    }
                 } label: {
                     ZStack {
-                        Label("Lock", systemImage: "lock")
+                        Label("Lock", systemImage: buttonsLocked ? "lock" : "lock.open")
                             .foregroundStyle(.foreground)
                             .labelStyle(.iconOnly)
                         RoundedRectangle(cornerRadius: 15)
