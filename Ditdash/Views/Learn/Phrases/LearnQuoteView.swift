@@ -31,6 +31,8 @@ struct LearnQuoteView: View {
                 }
             }
         }
+        .navigationTitle("Quotes")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
