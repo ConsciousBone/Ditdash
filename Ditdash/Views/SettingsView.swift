@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SettingsView: View {
-    // Accent colour shit
+    // Accent colours
     @AppStorage("selectedAccentIndex") private var selectedAccentIndex = 5
     let accentColours = [
         Color.red.gradient,     Color.orange.gradient,
@@ -24,6 +24,7 @@ struct SettingsView: View {
         "Purple",  "Brown",
         "White",   "Black"
     ]
+    
     var body: some View {
         Form {
             Section {

@@ -30,6 +30,8 @@ struct LearnSentenceView: View {
                 }
             }
         }
+        .navigationTitle("Sentences")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

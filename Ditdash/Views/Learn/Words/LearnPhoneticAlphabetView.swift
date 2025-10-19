@@ -35,6 +35,8 @@ struct LearnPhoneticAlphabetView: View {
                 }
             }
         }
+        .navigationTitle("Phonetic Alphabet")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

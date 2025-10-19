@@ -30,6 +30,8 @@ struct LearnSpecialView: View {
                 }
             }
         }
+        .navigationTitle("Symbols")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
