@@ -11,7 +11,7 @@ struct LearnView: View {
     var body: some View {
         Form {
             Section {
-                Text("Learn morse code with the Ditdash Learn mode!")
+                Text("Learn morse code with the innovative Ditdash Learn mode!")
             }
             
             Section {
@@ -26,8 +26,16 @@ struct LearnView: View {
                 } label: {
                     Label("Numbers", systemImage: "numbers")
                 }
+                
+                NavigationLink {
+                    LearnSpecialView()
+                } label: {
+                    Label("Symbols", systemImage: "exclamationmark.questionmark")
+                }
             }
         }
+        .navigationTitle("Learn")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
