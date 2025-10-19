@@ -1,5 +1,5 @@
 # Ditdash
-Ditdash is a clean, minimalistic morse code to text translator built for iOS and iPadOS devices.  
+Ditdash is a clean, minimalistic morse code to text translator built for iOS and iPadOS devices for Hack Club's Siege Week 7.  
 It supports iPhone, iPad, as well as Mac and Vision Pro using *Designed for iPad*.
 
 # Demos
@@ -18,3 +18,10 @@ This is the way I recommend, but there are other methods of sideloading, such as
 6. In the `Apple ID` text field, enter the email for your Apple Account/ID. If this is a paid developer account, you will need to resign/reinstall Ditdash once every 365 days; however if you are using a free developer account, you will need to resign/reinstall Ditdash once every 7 days.
 7. Click `Start`, and enter your Apple Account/ID's password when prompted to. **Your password never gets sent to either me or the Sideloadly developers - only Apple ever sees it.**
 8. Wait for the app to install to your device, then launch it! *You may be required to enable Developer Mode for the app to open, do so if your device prompts you to.*
+
+# Inspiration
+I have always been interested in morse code, and with this week's theme being *Signal* I felt that it was the perfect time to give it a go and see what I can do!
+
+# Tech stack
+- Swift (of course, its what like every iOS/iPadOS app is written in)
+- SwiftUI (used for the UI of Ditdash, incredible piece of software btw ty Apple)
