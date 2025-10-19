@@ -19,6 +19,8 @@ struct MorseLearnView: View {
     @State private var morseConverted = ""
     @State private var correctInput = false
     
+    @State private var correctAlertShowing = false
+    
     var body: some View {
         Text("Type \"\(text)\" in morse code.")
             .font(.title)
@@ -38,7 +40,19 @@ struct MorseLearnView: View {
                     morse: morse,
                     text: text
                 )
+                if correctInput {
+                    correctAlertShowing.toggle()
+                }
             }
+        // yes i know this is a bad place for an alert, idrc though
+            .alert("Correct answer!",
+                isPresented: $correctAlertShowing,
+                actions: {
+                Button("OK", role: .cancel) { morse = "" } // clear morse
+                }, message: {
+                    Text("\"\(text)\" is \"\(morse)\" in text.") // holy unreadable
+                }
+            )
         
         if showConverted {
             Spacer()

@@ -35,7 +35,15 @@ struct LearnCharView: View {
         Form {
             Section {
                 ForEach(textChars.indices, id: \.self) { index in
-                    
+                    NavigationLink {
+                        MorseLearnView(
+                            text: textChars[index],
+                            buttonMode: 0,
+                            showConverted: true
+                        )
+                    } label: {
+                        Text(textChars[index])
+                    }
                 }
             }
         }
