@@ -17,9 +17,13 @@ struct MorseLearnView: View {
     
     @State private var morse = ""
     @State private var morseConverted = ""
-    @State private var correctInput = false
+    @State private var buttonsLocked = false
     
+    @State private var correctInput = false
     @State private var correctAlertShowing = false
+    
+    @AppStorage("learnButtonMode") private var learnButtonMode = 0
+    // 0 is Adaptive, 1 is Full
     
     var body: some View {
         Text("Type \"\(text)\" in morse code.")
@@ -87,6 +91,7 @@ struct MorseLearnView: View {
                             .foregroundStyle(.secondary)
                     }
                 }
+                .disabled(buttonsLocked)
                 .frame(maxWidth: .infinity, maxHeight: 200)
                 
                 Button {
@@ -102,6 +107,7 @@ struct MorseLearnView: View {
                             .foregroundStyle(.secondary)
                     }
                 }
+                .disabled(buttonsLocked)
                 .frame(maxWidth: .infinity, maxHeight: 200)
             }
             
@@ -118,6 +124,7 @@ struct MorseLearnView: View {
                             .foregroundStyle(.secondary)
                     }
                 }
+                .disabled(buttonsLocked)
                 .frame(maxWidth: 50, maxHeight: 50)
                 
                 Button {
@@ -136,9 +143,10 @@ struct MorseLearnView: View {
                             .foregroundStyle(.secondary)
                     }
                 }
+                .disabled(buttonsLocked)
                 .frame(maxWidth: .infinity, maxHeight: 50)
                 
-                if buttonMode == 1 || buttonMode == 2 {
+                if buttonMode == 1 || buttonMode == 2 || learnButtonMode == 1 {
                     Button {
                         print("next char (space)")
                         morse.append(" ")
@@ -151,10 +159,11 @@ struct MorseLearnView: View {
                                 .foregroundStyle(.secondary)
                         }
                     }
+                    .disabled(buttonsLocked)
                     .frame(maxWidth: .infinity, maxHeight: 50)
                 }
                 
-                if buttonMode == 2 {
+                if buttonMode == 2 || learnButtonMode == 1 {
                     Button {
                         print("space")
                         morse.append(" / ")
@@ -167,7 +176,26 @@ struct MorseLearnView: View {
                                 .foregroundStyle(.secondary)
                         }
                     }
+                    .disabled(buttonsLocked)
                     .frame(maxWidth: .infinity, maxHeight: 50)
+                }
+                
+                if learnButtonMode == 1 {
+                    Button {
+                        print("lock buttons")
+                        withAnimation {
+                            buttonsLocked.toggle()
+                        }
+                    } label: {
+                        ZStack {
+                            Label("Lock", systemImage: buttonsLocked ? "lock" : "lock.open")
+                                .foregroundStyle(.foreground)
+                                .labelStyle(.iconOnly)
+                            RoundedRectangle(cornerRadius: 15)
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+                    .frame(maxWidth: 50, maxHeight: 50)
                 }
             }
         }
@@ -186,6 +214,13 @@ struct MorseLearnView: View {
     MorseLearnView(
         text: "abc",
         buttonMode: 1,
+        showConverted: true
+    )
+}
+#Preview("abc, buttonMode 2, showConverted true") {
+    MorseLearnView(
+        text: "abc",
+        buttonMode: 2,
         showConverted: true
     )
 }

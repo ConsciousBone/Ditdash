@@ -25,6 +25,11 @@ struct SettingsView: View {
         "White",   "Black"
     ]
     
+    // Learn settings
+    let learnButtonModes = ["Adaptive", "Full"]
+    @AppStorage("learnButtonMode") private var learnButtonMode = 0
+    // 0 is Adaptive, 1 is Full
+    
     var body: some View {
         Form {
             Section {
@@ -35,6 +40,18 @@ struct SettingsView: View {
                 } label: {
                     Label("Accent Color", systemImage: "paintpalette")
                 }
+            }
+            
+            Section {
+                Picker(selection: $learnButtonMode) {
+                    ForEach(learnButtonModes.indices, id: \.self) { i in
+                        Text(learnButtonModes[i])
+                    }
+                } label: {
+                    Label("Button Mode", systemImage: "button.horizontal")
+                }
+            } header: {
+                Text("Learn")
             }
         }
     }
