@@ -8,8 +8,33 @@
 import SwiftUI
 
 struct LearnPhoneticAlphabetView: View {
+    let words = [
+        "alpha", "bravo", "charlie",
+        "delta", "echo", "foxtrot",
+        "golf", "hotel", "india",
+        "juliet", "kilo", "lima",
+        "mike", "november", "oscar",
+        "papa", "quebec", "romeo",
+        "sierra", "tango", "uniform",
+        "victor", "whiskey", "xray",
+        "yankee", "zulu"
+    ]
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Form {
+            Section {
+                ForEach(words.indices, id: \.self) { index in
+                    NavigationLink {
+                        MorseLearnView(
+                            text: words[index],
+                            buttonMode: 1,
+                            showConverted: true
+                        )
+                    } label: {
+                        Text(words[index])
+                    }
+                }
+            }
+        }
     }
 }
 

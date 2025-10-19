@@ -38,6 +38,16 @@ struct LearnView: View {
             
             Section {
                 NavigationLink {
+                    LearnPhoneticAlphabetView()
+                } label: {
+                    Label("Phonetic Alphabet", systemImage: "character")
+                }
+            } header: {
+                Text("Words")
+            }
+            
+            Section {
+                NavigationLink {
                     LearnSentenceView()
                 } label: {
                     Label("Sentences", systemImage: "text.word.spacing")
