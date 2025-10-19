@@ -40,17 +40,19 @@ struct MorseView: View {
                 morseConverted = convertMorseToText(morse: morse)
             }
         
-        Spacer()
-        
         if morsePosition == 0 {
+            Spacer()
+            
             Text(morseConverted.isEmpty ? "Enter some morse..." : morseConverted)
                 .foregroundStyle(morseConverted.isEmpty ? .tertiary : .secondary)
                 .font(.headline.monospaced())
                 .padding()
                 .multilineTextAlignment(.center)
             
-            Spacer()
+            
         }
+        
+        Spacer()
         
         VStack {
             if ditDashPosition == 0 {

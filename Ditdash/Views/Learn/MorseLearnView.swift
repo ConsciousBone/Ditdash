@@ -22,6 +22,10 @@ struct MorseLearnView: View {
     @State private var correctInput = false
     @State private var correctAlertShowing = false
     
+    @AppStorage("ditDashPosition") private var ditDashPosition = 0
+    // 0 is Top, 1 is Bottom
+    @AppStorage("morsePosition") private var morsePosition = 0
+    // 0 is Top, 1 is Bottom
     @AppStorage("learnButtonMode") private var learnButtonMode = 0
     // 0 is Adaptive, 1 is Full
     
@@ -32,6 +36,16 @@ struct MorseLearnView: View {
             .padding()
         
         Spacer()
+        
+        if showConverted && morsePosition == 1 {
+            Text(morseConverted.isEmpty ? "Enter some morse..." : morseConverted)
+                .foregroundStyle(morseConverted.isEmpty ? .tertiary : .secondary)
+                .font(.headline.monospaced())
+                .padding()
+                .multilineTextAlignment(.center)
+            
+            Spacer()
+        }
         
         Text(morse.isEmpty ? ".-- --- ..-" : morse)
             .foregroundStyle(morse.isEmpty ? .secondary : .primary)
@@ -59,7 +73,7 @@ struct MorseLearnView: View {
                 }
             )
         
-        if showConverted {
+        if showConverted && morsePosition == 0 {
             Spacer()
             
             Text(morseConverted.isEmpty ? "Enter some morse..." : morseConverted)
