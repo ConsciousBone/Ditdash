@@ -17,8 +17,13 @@ struct MorseLearnView: View {
     
     @State private var morse = ""
     @State private var morseConverted = ""
+    @State private var correctInput = false
     
     var body: some View {
+        Text("Type \"\(text)\" in morse code.")
+            .font(.title)
+            .padding()
+        
         Spacer()
         
         Text(morse.isEmpty ? ".-- --- ..-" : morse)
@@ -29,15 +34,21 @@ struct MorseLearnView: View {
             .multilineTextAlignment(.center)
             .onChange(of: morse) {
                 morseConverted = convertMorseToText(morse: morse)
+                correctInput = learnConvertMorseToText(
+                    morse: morse,
+                    text: text
+                )
             }
         
-        Spacer()
-        
-        Text(morseConverted.isEmpty ? "Enter some morse..." : morseConverted)
-            .foregroundStyle(morseConverted.isEmpty ? .tertiary : .secondary)
-            .font(.headline.monospaced())
-            .padding()
-            .multilineTextAlignment(.center)
+        if showConverted {
+            Spacer()
+            
+            Text(morseConverted.isEmpty ? "Enter some morse..." : morseConverted)
+                .foregroundStyle(morseConverted.isEmpty ? .tertiary : .secondary)
+                .font(.headline.monospaced())
+                .padding()
+                .multilineTextAlignment(.center)
+        }
         
         Spacer()
         

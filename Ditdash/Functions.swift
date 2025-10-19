@@ -75,3 +75,35 @@ func convertMorseToText(morse: String) -> String {
     print("converted, output: \(output)")
     return output
 }
+
+func learnConvertMorseToText(morse: String, text: String) -> Bool {
+    // morse input will be formatted like:
+    // -... .- - / --- .- -.
+    // meaning "bat man", so each morse char has a space
+    // separating them, and each word has a / separating them.
+    print("converting '\(morse)' to text in learn mode...")
+    
+    // get individual words in morse
+    let morseSplit = morse.split(separator: " ", omittingEmptySubsequences: true).map { String($0) }
+    let morseWords = morseSplit.map { $0 == "/" ? " " : $0 }
+    print(morseWords)
+    
+    // convert morse to chars
+    var output = ""
+    for morse in morseWords {
+        if morse == " " {
+            output.append(" ")
+        } else if let index = morseChars.firstIndex(of: morse) {
+            output.append(textChars[index])
+        } else { // safely error
+            output.append("?")
+        }
+    }
+    
+    var isMorseEqualToText = (output == text)
+    
+    // converted, return true or false is equal
+    print("converted, output: \(output)")
+    print("is equal to required text: \(isMorseEqualToText)")
+    return isMorseEqualToText
+}
