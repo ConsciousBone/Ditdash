@@ -9,10 +9,29 @@ import SwiftUI
 
 struct LearnFruitView: View {
     let fruits = [
-        "apple", "banana", "cherry"
+        "apple", "banana", "cherry",
+        "dragonfruit", "elderberry", "fig",
+        "grape", "hackberry", "jujube",
+        "kiwi", "lime", "mango",
+        "nectarine", "olive", "peach",
+        "raspberry", "starfruit", "tangerine"
     ]
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Form {
+            Section {
+                ForEach(fruits.indices, id: \.self) { index in
+                    NavigationLink {
+                        MorseLearnView(
+                            text: fruits[index],
+                            buttonMode: 1,
+                            showConverted: true
+                        )
+                    } label: {
+                        Text(fruits[index])
+                    }
+                }
+            }
+        }
     }
 }
 

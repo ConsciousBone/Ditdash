@@ -42,6 +42,12 @@ struct LearnView: View {
                 } label: {
                     Label("Phonetic Alphabet", systemImage: "character")
                 }
+                
+                NavigationLink {
+                    LearnFruitView()
+                } label: {
+                    Label("Fruit", systemImage: "fork.knife")
+                }
             } header: {
                 Text("Words")
             }
