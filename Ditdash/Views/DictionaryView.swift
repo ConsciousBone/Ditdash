@@ -49,12 +49,24 @@ struct DictionaryView: View {
     ]
     
     var body: some View {
-        List {
-            ForEach(textChars.indices, id: \.self) { char in
-                HStack {
-                    Text(textChars[char])
-                    Spacer()
-                    Text(morseChars[char])
+        NavigationStack {
+            List {
+                Section {
+                    NavigationLink {
+                        LearnView()
+                    } label: {
+                        Label("Learn", systemImage: "brain")
+                    }
+                }
+                
+                Section {
+                    ForEach(textChars.indices, id: \.self) { char in
+                        HStack {
+                            Text(textChars[char])
+                            Spacer()
+                            Text(morseChars[char])
+                        }
+                    }
                 }
             }
         }
