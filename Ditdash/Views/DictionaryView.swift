@@ -52,14 +52,6 @@ struct DictionaryView: View {
         NavigationStack {
             List {
                 Section {
-                    NavigationLink {
-                        LearnView()
-                    } label: {
-                        Label("Learn", systemImage: "brain")
-                    }
-                }
-                
-                Section {
                     ForEach(textChars.indices, id: \.self) { char in
                         HStack {
                             Text(textChars[char])

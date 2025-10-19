@@ -25,6 +25,9 @@ struct ContentView: View {
             Tab("Dictionary", systemImage: "book") {
                 DictionaryView()
             }
+            Tab("Learn", systemImage: "brain") {
+                LearnView()
+            }
             Tab("Settings", systemImage: "gear") {
                 SettingsView()
             }

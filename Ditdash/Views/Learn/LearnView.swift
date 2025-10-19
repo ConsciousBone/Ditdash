@@ -9,72 +9,74 @@ import SwiftUI
 
 struct LearnView: View {
     var body: some View {
-        Form {
-            Section {
-                Text("Learn morse code with the innovative Ditdash Learn mode!")
-            }
-            
-            Section {
-                NavigationLink {
-                    LearnCharView()
-                } label: {
-                    Label("Letters", systemImage: "characters.lowercase")
+        NavigationStack {
+            Form {
+                Section {
+                    Text("Learn morse code with the innovative Ditdash Learn mode!")
                 }
                 
-                NavigationLink {
-                    LearnNumView()
-                } label: {
-                    Label("Numbers", systemImage: "numbers")
+                Section {
+                    NavigationLink {
+                        LearnCharView()
+                    } label: {
+                        Label("Letters", systemImage: "characters.lowercase")
+                    }
+                    
+                    NavigationLink {
+                        LearnNumView()
+                    } label: {
+                        Label("Numbers", systemImage: "numbers")
+                    }
+                    
+                    NavigationLink {
+                        LearnSpecialView()
+                    } label: {
+                        Label("Symbols", systemImage: "exclamationmark.questionmark")
+                    }
+                } header: {
+                    Text("Single Characters")
                 }
                 
-                NavigationLink {
-                    LearnSpecialView()
-                } label: {
-                    Label("Symbols", systemImage: "exclamationmark.questionmark")
-                }
-            } header: {
-                Text("Single Characters")
-            }
-            
-            Section {
-                NavigationLink {
-                    LearnPhoneticAlphabetView()
-                } label: {
-                    Label("Phonetic Alphabet", systemImage: "character")
+                Section {
+                    NavigationLink {
+                        LearnPhoneticAlphabetView()
+                    } label: {
+                        Label("Phonetic Alphabet", systemImage: "character")
+                    }
+                    
+                    NavigationLink {
+                        LearnFruitView()
+                    } label: {
+                        Label("Fruit", systemImage: "fork.knife")
+                    }
+                    
+                    NavigationLink {
+                        LearnAnimalView()
+                    } label: {
+                        Label("Animals", systemImage: "ladybug")
+                    }
+                } header: {
+                    Text("Words")
                 }
                 
-                NavigationLink {
-                    LearnFruitView()
-                } label: {
-                    Label("Fruit", systemImage: "fork.knife")
+                Section {
+                    NavigationLink {
+                        LearnSentenceView()
+                    } label: {
+                        Label("Sentences", systemImage: "text.word.spacing")
+                    }
+                    NavigationLink {
+                        LearnQuoteView()
+                    } label: {
+                        Label("Quotes", systemImage: "text.quote")
+                    }
+                } header: {
+                    Text("Phrases")
                 }
-                
-                NavigationLink {
-                    LearnAnimalView()
-                } label: {
-                    Label("Animals", systemImage: "ladybug")
-                }
-            } header: {
-                Text("Words")
             }
-            
-            Section {
-                NavigationLink {
-                    LearnSentenceView()
-                } label: {
-                    Label("Sentences", systemImage: "text.word.spacing")
-                }
-                NavigationLink {
-                    LearnQuoteView()
-                } label: {
-                    Label("Quotes", systemImage: "text.quote")
-                }
-            } header: {
-                Text("Phrases")
-            }
+            .navigationTitle("Learn")
+            .navigationBarTitleDisplayMode(.inline)
         }
-        .navigationTitle("Learn")
-        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
