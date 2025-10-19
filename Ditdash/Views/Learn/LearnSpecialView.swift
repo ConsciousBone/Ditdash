@@ -8,8 +8,28 @@
 import SwiftUI
 
 struct LearnSpecialView: View {
+    let textChars = [
+        ",", ".", "?",
+        "\"", ":", "'",
+        "-", "/", "(",
+        ")", "!", "@"
+    ]
     var body: some View {
-        Text("All learn special chars i.e. ! ? @")
+        Form {
+            Section {
+                ForEach(textChars.indices, id: \.self) { index in
+                    NavigationLink {
+                        MorseLearnView(
+                            text: textChars[index],
+                            buttonMode: 0,
+                            showConverted: true
+                        )
+                    } label: {
+                        Text(textChars[index])
+                    }
+                }
+            }
+        }
     }
 }
 

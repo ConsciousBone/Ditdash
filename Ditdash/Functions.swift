@@ -96,7 +96,7 @@ func learnConvertMorseToText(morse: String, text: String) -> Bool {
         } else if let index = morseChars.firstIndex(of: morse) {
             output.append(textChars[index])
         } else { // safely error
-            output.append("?")
+            output.append("(?)") // brackets stops ?
         }
     }
     
