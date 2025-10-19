@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LearnQuoteView: View {
-    @AppStorage("learnShowConversion") private var learnShowConversion = 1
+    @AppStorage("learnShowConversion") private var learnShowConversion = true
     // 0 is Off, 1 is On
     
     let quotes = [
@@ -26,7 +26,7 @@ struct LearnQuoteView: View {
                         MorseLearnView(
                             text: quotes[index],
                             buttonMode: 2,
-                            showConverted: learnShowConversion == 1
+                            showConverted: learnShowConversion
                         )
                     } label: {
                         Text(quotes[index])
