@@ -28,6 +28,7 @@ struct MorseLearnView: View {
     // 0 is Top, 1 is Bottom
     @AppStorage("learnButtonMode") private var learnButtonMode = 0
     // 0 is Adaptive, 1 is Full
+    @AppStorage("learnClearUponCompletion") private var learnClearUponCompletion = true
     
     var body: some View {
         Text("Type \"\(text)\" in morse code.")
@@ -67,8 +68,11 @@ struct MorseLearnView: View {
             .alert("Correct answer!",
                 isPresented: $correctAlertShowing,
                 actions: {
-                Button("OK", role: .cancel) { morse = "" } // clear morse
-                }, message: {
+                Button("OK", role: .cancel) {
+                    if learnClearUponCompletion {
+                        morse = ""
+                    }
+                }}, message: {
                     Text("\"\(text)\" is \"\(morse)\" in morse code.")
                 }
             )

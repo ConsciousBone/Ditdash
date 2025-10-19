@@ -37,9 +37,8 @@ struct SettingsView: View {
     let learnButtonModes = ["Adaptive", "Full"]
     @AppStorage("learnButtonMode") private var learnButtonMode = 0
     // 0 is Adaptive, 1 is Full
-    
+    @AppStorage("learnClearUponCompletion") private var learnClearUponCompletion = true
     @AppStorage("learnShowConversion") private var learnShowConversion = true
-    // 0 is Off, 1 is On
     
     var body: some View {
         Form {
@@ -79,6 +78,11 @@ struct SettingsView: View {
                 } label: {
                     Label("Button Mode", systemImage: "button.horizontal")
                 }
+                
+                Toggle(isOn: $learnClearUponCompletion, label: {
+                    Label("Clear upon Completion", systemImage: "clear")
+                })
+                
                 Toggle(isOn: $learnShowConversion, label: {
                     Label("Show Conversion", systemImage: "arrow.left.arrow.right")
                 })
