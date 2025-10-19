@@ -48,6 +48,12 @@ struct LearnView: View {
                 } label: {
                     Label("Fruit", systemImage: "fork.knife")
                 }
+                
+                NavigationLink {
+                    LearnAnimalView()
+                } label: {
+                    Label("Animals", systemImage: "ladybug")
+                }
             } header: {
                 Text("Words")
             }

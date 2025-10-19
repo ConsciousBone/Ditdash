@@ -8,9 +8,32 @@
 import SwiftUI
 
 struct LearnAnimalView: View {
-    let animals = []
+    let animals = [
+        "dog", "cat", "chicken",
+        "cow", "donkey", "goat",
+        "pig", "horse", "rat",
+        "sheep", "mouse", "rabbit",
+        "ant", "fly", "moth",
+        "spider", "butterfly", "bee"
+    ]
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Form {
+            Section {
+                ForEach(animals.indices, id: \.self) { index in
+                    NavigationLink {
+                        MorseLearnView(
+                            text: animals[index],
+                            buttonMode: 1,
+                            showConverted: true
+                        )
+                    } label: {
+                        Text(animals[index])
+                    }
+                }
+            }
+        }
+        .navigationTitle("Animals")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
