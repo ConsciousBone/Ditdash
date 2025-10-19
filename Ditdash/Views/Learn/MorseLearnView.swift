@@ -50,7 +50,7 @@ struct MorseLearnView: View {
                 actions: {
                 Button("OK", role: .cancel) { morse = "" } // clear morse
                 }, message: {
-                    Text("\"\(text)\" is \"\(morse)\" in text.") // holy unreadable
+                    Text("\"\(text)\" is \"\(morse)\" in morse code.")
                 }
             )
         
