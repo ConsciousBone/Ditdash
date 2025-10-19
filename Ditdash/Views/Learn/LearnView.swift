@@ -32,6 +32,18 @@ struct LearnView: View {
                 } label: {
                     Label("Symbols", systemImage: "exclamationmark.questionmark")
                 }
+            } header: {
+                Text("Single Characters")
+            }
+            
+            Section {
+                NavigationLink {
+                    Text("a")
+                } label: {
+                    Label("Quotes", systemImage: "text.quote")
+                }
+            } header: {
+                Text("Phrases")
             }
         }
         .navigationTitle("Learn")
