@@ -14,9 +14,21 @@ struct MorseView: View {
     
     @AppStorage("ditDashPosition") private var ditDashPosition = 0
     // 0 is Top, 1 is Bottom
+    @AppStorage("morsePosition") private var morsePosition = 0
+    // 0 is Top, 1 is Bottom
     
     var body: some View {
         Spacer()
+        
+        if morsePosition == 1 {
+            Text(morseConverted.isEmpty ? "Enter some morse..." : morseConverted)
+                .foregroundStyle(morseConverted.isEmpty ? .tertiary : .secondary)
+                .font(.headline.monospaced())
+                .padding()
+                .multilineTextAlignment(.center)
+            
+            Spacer()
+        }
         
         Text(morse.isEmpty ? ".-- --- ..-" : morse)
             .foregroundStyle(morse.isEmpty ? .secondary : .primary)
@@ -30,13 +42,15 @@ struct MorseView: View {
         
         Spacer()
         
-        Text(morseConverted.isEmpty ? "Enter some morse..." : morseConverted)
-            .foregroundStyle(morseConverted.isEmpty ? .tertiary : .secondary)
-            .font(.headline.monospaced())
-            .padding()
-            .multilineTextAlignment(.center)
-        
-        Spacer()
+        if morsePosition == 0 {
+            Text(morseConverted.isEmpty ? "Enter some morse..." : morseConverted)
+                .foregroundStyle(morseConverted.isEmpty ? .tertiary : .secondary)
+                .font(.headline.monospaced())
+                .padding()
+                .multilineTextAlignment(.center)
+            
+            Spacer()
+        }
         
         VStack {
             if ditDashPosition == 0 {

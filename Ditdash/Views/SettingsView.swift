@@ -29,6 +29,10 @@ struct SettingsView: View {
     @AppStorage("ditDashPosition") private var ditDashPosition = 0
     // 0 is Top, 1 is Bottom
     
+    let morsePositions = ["Top", "Bottom"]
+    @AppStorage("morsePosition") private var morsePosition = 0
+    // 0 is Top, 1 is Bottom
+    
     // Learn settings
     let learnButtonModes = ["Adaptive", "Full"]
     @AppStorage("learnButtonMode") private var learnButtonMode = 0
@@ -51,6 +55,14 @@ struct SettingsView: View {
                     }
                 } label: {
                     Label("Dit/Dash Alignment", systemImage: "align.vertical.center")
+                }
+                
+                Picker(selection: $morsePosition) {
+                    ForEach(morsePositions.indices, id: \.self) { i in
+                        Text(morsePositions[i])
+                    }
+                } label: {
+                    Label("Morse Alignment", systemImage: "align.vertical.center")
                 }
             } header: {
                 Text("Theming")
