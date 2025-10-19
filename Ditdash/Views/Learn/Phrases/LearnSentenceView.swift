@@ -13,6 +13,7 @@ struct LearnSentenceView: View {
         "hello world", "good morning",
         "practice makes perfect", "time flies"
     ]
+    
     var body: some View {
         Form {
             Section {

@@ -38,6 +38,11 @@ struct LearnView: View {
             
             Section {
                 NavigationLink {
+                    LearnSentenceView()
+                } label: {
+                    Label("Sentences", systemImage: "text.word.spacing")
+                }
+                NavigationLink {
                     LearnQuoteView()
                 } label: {
                     Label("Quotes", systemImage: "text.quote")
