@@ -52,6 +52,11 @@ struct MorseLearnView: View {
         
         Spacer()
         
+        Text(correctInput ? "Answer correct!" : "Answer incorrect.")
+            .foregroundStyle(
+                correctInput ? Color.green : Color.secondary
+            )
+        
         VStack {
             HStack(spacing: 10) {
                 Button {
