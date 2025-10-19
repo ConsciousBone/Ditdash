@@ -13,6 +13,7 @@ struct MorseLearnView: View {
     // 0 = dit, dash, backspace, clear
     // 1 = dit, dash, backspace, space, clear
     // 2 = dit, dash, backspace, space, slash, clear
+    let showConverted: Bool
     
     @State private var morse = ""
     @State private var morseConverted = ""
@@ -106,42 +107,55 @@ struct MorseLearnView: View {
                 }
                 .frame(maxWidth: .infinity, maxHeight: 50)
                 
-                Button {
-                    print("next char (space)")
-                    morse.append(" ")
-                } label: {
-                    ZStack {
-                        Label("Next Character", systemImage: "space")
-                            .foregroundStyle(.foreground)
-                            .labelStyle(.iconOnly)
-                        RoundedRectangle(cornerRadius: 15)
-                            .foregroundStyle(.secondary)
+                if buttonMode == 1 || buttonMode == 2 {
+                    Button {
+                        print("next char (space)")
+                        morse.append(" ")
+                    } label: {
+                        ZStack {
+                            Label("Next Character", systemImage: "space")
+                                .foregroundStyle(.foreground)
+                                .labelStyle(.iconOnly)
+                            RoundedRectangle(cornerRadius: 15)
+                                .foregroundStyle(.secondary)
+                        }
                     }
+                    .frame(maxWidth: .infinity, maxHeight: 50)
                 }
-                .frame(maxWidth: .infinity, maxHeight: 50)
                 
-                Button {
-                    print("space")
-                    morse.append(" / ")
-                } label: {
-                    ZStack {
-                        Label("Space", systemImage: "line.diagonal")
-                            .foregroundStyle(.foreground)
-                            .labelStyle(.iconOnly)
-                        RoundedRectangle(cornerRadius: 15)
-                            .foregroundStyle(.secondary)
+                if buttonMode == 2 {
+                    Button {
+                        print("space")
+                        morse.append(" / ")
+                    } label: {
+                        ZStack {
+                            Label("Space", systemImage: "line.diagonal")
+                                .foregroundStyle(.foreground)
+                                .labelStyle(.iconOnly)
+                            RoundedRectangle(cornerRadius: 15)
+                                .foregroundStyle(.secondary)
+                        }
                     }
+                    .frame(maxWidth: .infinity, maxHeight: 50)
                 }
-                .frame(maxWidth: .infinity, maxHeight: 50)
             }
         }
         .padding()
     }
 }
 
-#Preview("a, buttonMode 0") {
-    MorseLearnView(text: "a", buttonMode: 0)
+#Preview("a, buttonMode 0, showConverted false") {
+    MorseLearnView(
+        text: "a",
+        buttonMode: 0,
+        showConverted: false
+    )
 }
-#Preview("abc, buttonMode 1") {
-    MorseLearnView(text: "abc", buttonMode: 1)
+#Preview("abc, buttonMode 1, showConverted true") {
+    MorseLearnView(
+        text: "abc",
+        buttonMode: 1,
+        showConverted: true
+    )
 }
+
