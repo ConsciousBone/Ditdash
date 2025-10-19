@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct LearnSentenceView: View {
+    @AppStorage("learnShowConversion") private var learnShowConversion = 1
+    // 0 is Off, 1 is On
+    
     let sentences = [
         "the quick brown fox jumps over the lazy dog",
         "hello world", "good morning",
@@ -22,7 +25,7 @@ struct LearnSentenceView: View {
                         MorseLearnView(
                             text: sentences[index],
                             buttonMode: 2,
-                            showConverted: true
+                            showConverted: learnShowConversion == 1
                         )
                     } label: {
                         Text(sentences[index])

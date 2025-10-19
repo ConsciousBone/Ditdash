@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct LearnAnimalView: View {
+    @AppStorage("learnShowConversion") private var learnShowConversion = 1
+    // 0 is Off, 1 is On
+    
     let animals = [
         "dog", "cat", "chicken",
         "cow", "donkey", "goat",
@@ -16,6 +19,7 @@ struct LearnAnimalView: View {
         "ant", "fly", "moth",
         "spider", "butterfly", "bee"
     ]
+    
     var body: some View {
         Form {
             Section {
@@ -24,7 +28,7 @@ struct LearnAnimalView: View {
                         MorseLearnView(
                             text: animals[index],
                             buttonMode: 1,
-                            showConverted: true
+                            showConverted: learnShowConversion == 1
                         )
                     } label: {
                         Text(animals[index])

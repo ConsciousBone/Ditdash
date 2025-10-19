@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct LearnFruitView: View {
+    @AppStorage("learnShowConversion") private var learnShowConversion = 1
+    // 0 is Off, 1 is On
+    
     let fruits = [
         "apple", "banana", "cherry",
         "dragonfruit", "elderberry", "fig",
@@ -16,6 +19,7 @@ struct LearnFruitView: View {
         "nectarine", "olive", "peach",
         "raspberry", "starfruit", "tangerine"
     ]
+    
     var body: some View {
         Form {
             Section {
@@ -24,7 +28,7 @@ struct LearnFruitView: View {
                         MorseLearnView(
                             text: fruits[index],
                             buttonMode: 1,
-                            showConverted: true
+                            showConverted: learnShowConversion == 1
                         )
                     } label: {
                         Text(fruits[index])

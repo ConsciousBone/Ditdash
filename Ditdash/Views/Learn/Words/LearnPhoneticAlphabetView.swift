@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct LearnPhoneticAlphabetView: View {
+    @AppStorage("learnShowConversion") private var learnShowConversion = 1
+    // 0 is Off, 1 is On
+    
     let words = [
         "alpha", "bravo", "charlie",
         "delta", "echo", "foxtrot",
@@ -19,6 +22,7 @@ struct LearnPhoneticAlphabetView: View {
         "victor", "whiskey", "xray",
         "yankee", "zulu"
     ]
+    
     var body: some View {
         Form {
             Section {
@@ -27,7 +31,7 @@ struct LearnPhoneticAlphabetView: View {
                         MorseLearnView(
                             text: words[index],
                             buttonMode: 1,
-                            showConverted: true
+                            showConverted: learnShowConversion == 1
                         )
                     } label: {
                         Text(words[index])

@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct LearnNumView: View {
+    @AppStorage("learnShowConversion") private var learnShowConversion = 1
+    // 0 is Off, 1 is On
+    
     let textChars = [
         "0", "1", "2",
         "3", "4", "5",
@@ -23,7 +26,7 @@ struct LearnNumView: View {
                         MorseLearnView(
                             text: textChars[index],
                             buttonMode: 0,
-                            showConverted: true
+                            showConverted: learnShowConversion == 1
                         )
                     } label: {
                         Text(textChars[index])
