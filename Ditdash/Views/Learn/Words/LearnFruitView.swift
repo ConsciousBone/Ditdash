@@ -32,6 +32,8 @@ struct LearnFruitView: View {
                 }
             }
         }
+        .navigationTitle("Fruit")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
