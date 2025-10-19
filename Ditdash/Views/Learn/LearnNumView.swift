@@ -8,8 +8,31 @@
 import SwiftUI
 
 struct LearnNumView: View {
+    let textChars = [
+        "0", "1", "2",
+        "3", "4", "5",
+        "6", "7", "8",
+        "9"
+    ]
+    
     var body: some View {
-        Text("All learn numbers 0-9")
+        Form {
+            Section {
+                ForEach(textChars.indices, id: \.self) { index in
+                    NavigationLink {
+                        MorseLearnView(
+                            text: textChars[index],
+                            buttonMode: 0,
+                            showConverted: true
+                        )
+                    } label: {
+                        Text(textChars[index])
+                    }
+                }
+            }
+        }
+        .navigationTitle("Numbers")
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 

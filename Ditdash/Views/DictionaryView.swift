@@ -69,6 +69,8 @@ struct DictionaryView: View {
                     }
                 }
             }
+            .navigationTitle("Dictionary")
+            .navigationBarTitleDisplayMode(.inline)
         }
     }
 }

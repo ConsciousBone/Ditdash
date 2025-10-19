@@ -100,7 +100,7 @@ func learnConvertMorseToText(morse: String, text: String) -> Bool {
         }
     }
     
-    var isMorseEqualToText = (output == text)
+    let isMorseEqualToText = (output == text)
     
     // converted, return true or false is equal
     print("converted, output: \(output)")
