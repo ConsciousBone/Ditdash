@@ -24,6 +24,7 @@ struct MorseLearnView: View {
     var body: some View {
         Text("Type \"\(text)\" in morse code.")
             .font(.title)
+            .multilineTextAlignment(.center)
             .padding()
         
         Spacer()
