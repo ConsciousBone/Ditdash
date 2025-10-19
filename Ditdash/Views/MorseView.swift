@@ -12,6 +12,9 @@ struct MorseView: View {
     @State private var morseConverted = ""
     @State private var buttonsLocked = false
     
+    @AppStorage("ditDashPosition") private var ditDashPosition = 0
+    // 0 is Top, 1 is Bottom
+    
     var body: some View {
         Spacer()
         
@@ -36,38 +39,40 @@ struct MorseView: View {
         Spacer()
         
         VStack {
-            HStack(spacing: 10) {
-                Button {
-                    print("dit")
-                    morse.append(".")
-                } label: {
-                    ZStack {
-                        Circle()
-                            .frame(width: 25)
-                            .foregroundStyle(.foreground)
-                            .padding()
-                        RoundedRectangle(cornerRadius: 15)
-                            .foregroundStyle(.secondary)
+            if ditDashPosition == 0 {
+                HStack(spacing: 10) {
+                    Button {
+                        print("dit")
+                        morse.append(".")
+                    } label: {
+                        ZStack {
+                            Circle()
+                                .frame(width: 25)
+                                .foregroundStyle(.foreground)
+                                .padding()
+                            RoundedRectangle(cornerRadius: 15)
+                                .foregroundStyle(.secondary)
+                        }
                     }
-                }
-                .disabled(buttonsLocked)
-                .frame(maxWidth: .infinity, maxHeight: 200)
-                
-                Button {
-                    print("dash")
-                    morse.append("-")
-                } label: {
-                    ZStack {
-                        Capsule()
-                            .frame(width: 75, height: 25)
-                            .foregroundStyle(.foreground)
-                            .padding()
-                        RoundedRectangle(cornerRadius: 15)
-                            .foregroundStyle(.secondary)
+                    .disabled(buttonsLocked)
+                    .frame(maxWidth: .infinity, maxHeight: 200)
+                    
+                    Button {
+                        print("dash")
+                        morse.append("-")
+                    } label: {
+                        ZStack {
+                            Capsule()
+                                .frame(width: 75, height: 25)
+                                .foregroundStyle(.foreground)
+                                .padding()
+                            RoundedRectangle(cornerRadius: 15)
+                                .foregroundStyle(.secondary)
+                        }
                     }
+                    .disabled(buttonsLocked)
+                    .frame(maxWidth: .infinity, maxHeight: 200)
                 }
-                .disabled(buttonsLocked)
-                .frame(maxWidth: .infinity, maxHeight: 200)
             }
             
             HStack(spacing: 10) {
@@ -150,6 +155,42 @@ struct MorseView: View {
                     }
                 }
                 .frame(maxWidth: 50, maxHeight: 50)
+            }
+            
+            if ditDashPosition == 1 {
+                HStack(spacing: 10) {
+                    Button {
+                        print("dit")
+                        morse.append(".")
+                    } label: {
+                        ZStack {
+                            Circle()
+                                .frame(width: 25)
+                                .foregroundStyle(.foreground)
+                                .padding()
+                            RoundedRectangle(cornerRadius: 15)
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+                    .disabled(buttonsLocked)
+                    .frame(maxWidth: .infinity, maxHeight: 200)
+                    
+                    Button {
+                        print("dash")
+                        morse.append("-")
+                    } label: {
+                        ZStack {
+                            Capsule()
+                                .frame(width: 75, height: 25)
+                                .foregroundStyle(.foreground)
+                                .padding()
+                            RoundedRectangle(cornerRadius: 15)
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+                    .disabled(buttonsLocked)
+                    .frame(maxWidth: .infinity, maxHeight: 200)
+                }
             }
         }
         .padding()

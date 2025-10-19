@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct SettingsView: View {
-    // Accent colours
-    @AppStorage("selectedAccentIndex") private var selectedAccentIndex = 5
+    // Theme settings
     let accentColours = [
         Color.red.gradient,     Color.orange.gradient,
         Color.yellow.gradient,  Color.green.gradient,
@@ -24,6 +23,11 @@ struct SettingsView: View {
         "Purple",  "Brown",
         "White",   "Black"
     ]
+    @AppStorage("selectedAccentIndex") private var selectedAccentIndex = 5
+    
+    let ditDashPositions = ["Top", "Bottom"]
+    @AppStorage("ditDashPosition") private var ditDashPosition = 0
+    // 0 is Top, 1 is Bottom
     
     // Learn settings
     let learnButtonModes = ["Adaptive", "Full"]
@@ -40,6 +44,16 @@ struct SettingsView: View {
                 } label: {
                     Label("Accent Color", systemImage: "paintpalette")
                 }
+                
+                Picker(selection: $ditDashPosition) {
+                    ForEach(ditDashPositions.indices, id: \.self) { i in
+                        Text(ditDashPositions[i])
+                    }
+                } label: {
+                    Label("Dit/Dash Alignment", systemImage: "align.vertical.center")
+                }
+            } header: {
+                Text("Theming")
             }
             
             Section {
