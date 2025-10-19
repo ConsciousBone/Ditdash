@@ -38,7 +38,7 @@ struct LearnView: View {
             
             Section {
                 NavigationLink {
-                    Text("a")
+                    LearnQuoteView()
                 } label: {
                     Label("Quotes", systemImage: "text.quote")
                 }

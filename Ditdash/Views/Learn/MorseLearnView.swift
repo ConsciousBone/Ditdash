@@ -10,9 +10,9 @@ import SwiftUI
 struct MorseLearnView: View {
     let text: String
     let buttonMode: Int
-    // 0 = dit, dash, backspace, clear
-    // 1 = dit, dash, backspace, space, clear
-    // 2 = dit, dash, backspace, space, slash, clear
+    // 0 = dit, dash, backspace, clear (single characters)
+    // 1 = dit, dash, backspace, space, clear (words)
+    // 2 = dit, dash, backspace, space, slash, clear (phrases)
     let showConverted: Bool
     
     @State private var morse = ""
