@@ -4,9 +4,11 @@ It supports iPhone, iPad, as well as Mac and Vision Pro using *Designed for iPad
 
 # Demos
 ## Screenshots
-TODO: add screenies!
+<img src="/Screenshots/1.png" width=128> <img src="/Screenshots/2.png" width=128> <img src="/Screenshots/3.png" width=128>
+<img src="/Screenshots/4.png" width=128> <img src="/Screenshots/5.png" width=128> <img src="/Screenshots/6.png" width=128>
+<img src="/Screenshots/7.png" width=128> <img src="/Screenshots/8.png" width=128>
 ## Video
-TODO: add video!
+[YouTube link](https://youtu.be/vC8N-th6Ams)
 
 # How to get Ditdash
 This is the way I recommend, but there are other methods of sideloading, such as AltStore/SideStore.
